@@ -9,8 +9,8 @@ const Footer = () => {
                 <div className="row">
                     {/* Exclusive Section */}
                     <div className="col-md-3">
-                        <h5 className="fw-bold">Exclusive</h5>
-                        <p className="fw-bold">Subscribe</p>
+                        <h5 className="mb-4">Exclusive</h5>
+                        <p className="">Subscribe</p>
                         <p>Get 10% off your first order</p>
                         <div className="input-group">
                             <input
@@ -26,20 +26,20 @@ const Footer = () => {
 
                     {/* Support Section */}
                     <div className="col-md-3">
-                        <h5 className="fw-bold">Support</h5>
-                        <p>1234, Park Street, DL-11111, India.</p>
-                        <p>
-                            <a href="mailto:Test@testmail.com" className="text-white">
+                        <h5 className="mb-4">Support</h5>
+                        <ul className="list-unstyled d-flex flex-column gap-2" style={{ fontWeight: "300" }}>
+                            <li>1234, Park Street, DL-11111, India.</li>
+                            <li><a href="mailto:Test@testmail.com" className="text-white">
                                 Test@testmail.com
-                            </a>
-                        </p>
-                        <p>+91-999-999-9999</p>
+                            </a></li>
+                            <li>+91-999-999-9999</li>
+                        </ul>
                     </div>
 
                     {/* Account Section */}
                     <div className="col-md-3">
-                        <h5 className="fw-bold">Account</h5>
-                        <ul className="list-unstyled">
+                        <h5 className="mb-4">Account</h5>
+                        <ul className="list-unstyled d-flex flex-column gap-2">
                             <li>My Account</li>
                             <li>Login / Register</li>
                             <li>Cart</li>
@@ -50,8 +50,8 @@ const Footer = () => {
 
                     {/* Quick Links Section */}
                     <div className="col-md-3">
-                        <h5 className="fw-bold">Quick Link</h5>
-                        <ul className="list-unstyled">
+                        <h5 className="mb-4">Quick Link</h5>
+                        <ul className="list-unstyled d-flex flex-column gap-2">
                             <li>Privacy Policy</li>
                             <li>Terms Of Use</li>
                             <li>FAQ</li>
@@ -61,8 +61,8 @@ const Footer = () => {
                 </div>
 
                 {/* Copyright Section */}
-                <div className="text-center mt-4 border-top pt-3">
-                    <p className="mb-0">© Copyright Harmoni 2025. All rights reserved</p>
+                <div className="text-center mt-4 pt-3">
+                    <p className="mb-0" style={{ color: "gray" }}>© Copyright Harmoni 2025. All rights reserved</p>
                 </div>
             </div>
         </footer>
