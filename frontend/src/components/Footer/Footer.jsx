@@ -1,125 +1,72 @@
-import React from 'react'
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { FaRegPaperPlane } from "react-icons/fa";
 
 const Footer = () => {
     return (
-        <footer className="bg-black text-white py-4">
-            <div className="footer-container" style={{ margin: "0px 1.5rem" }}>
+        <footer className="bg-black text-white py-5">
+            <div className="container">
                 <div className="row">
-                    {/* Factory Section */}
-                    <div className="col-md-3 mb-4">
-                        <h6 className="fw-normal pb-3 mb-0">Factory</h6>
-                        <div className="textwidget">
-                            <ul className="conk d-flex flex-column gap-2">
-                                <li className="d-flex gap-2">
-                                    <i className="fa fa-industry"></i>{" "}
-                                    <span style={{ fontSize: "14px" }}>
-                                        Survey No. 281, Paddhari Neknam Road, Village Neknam,
-                                        Tankara, Rajkot 363650, India
-                                    </span>
-                                </li>
-                            </ul>
+                    {/* Exclusive Section */}
+                    <div className="col-md-3">
+                        <h5 className="fw-bold">Exclusive</h5>
+                        <p className="fw-bold">Subscribe</p>
+                        <p>Get 10% off your first order</p>
+                        <div className="input-group">
+                            <input
+                                type="email"
+                                className="form-control bg-dark text-white border-secondary"
+                                placeholder="Enter your email"
+                            />
+                            <button className="btn btn-outline-light">
+                                <FaRegPaperPlane />
+                            </button>
                         </div>
                     </div>
 
-                    {/* Mumbai Office Section */}
-                    <div className="col-md-3 mb-4">
-                        <h6 className="fw-normal pb-3 mb-0">Mumbai Office</h6>
-                        <div className="textwidget">
-                            <ul className="conk d-flex flex-column gap-2">
-                                <li className="d-flex gap-2">
-                                    <i className="fa fa-building"></i>{" "}
-                                    <span style={{ fontSize: "14px" }}>
-                                        No. 15, V N Pawar, Road No. 5, Borivali, Mumbai – 400066,
-                                        India
-                                    </span>
-                                </li>
-                            </ul>
-                        </div>
+                    {/* Support Section */}
+                    <div className="col-md-3">
+                        <h5 className="fw-bold">Support</h5>
+                        <p>1234, Park Street, DL-11111, India.</p>
+                        <p>
+                            <a href="mailto:Test@testmail.com" className="text-white">
+                                Test@testmail.com
+                            </a>
+                        </p>
+                        <p>+91-999-999-9999</p>
                     </div>
 
-                    {/* Contact Us Section */}
-                    <div className="col-md-3 mb-4">
-                        <h6 className="fw-normal pb-3 mb-0">Contact Us</h6>
-                        <div className="textwidget">
-                            <ul className="conk d-flex flex-column gap-2">
-                                <li className="d-flex gap-2">
-                                    <i className="fa fa-phone-volume"></i>{" "}
-                                    <span style={{ fontSize: "14px" }}>
-                                        Telephone No. +91 72082 09990
-                                    </span>
-                                </li>
-                                <li className="d-flex gap-2">
-                                    <i className="fa fa-mobile"></i>{" "}
-                                    <span style={{ fontSize: "14px" }}>
-                                        Mobile No. +91 99302 85087
-                                    </span>
-                                </li>
-                            </ul>
-                        </div>
+                    {/* Account Section */}
+                    <div className="col-md-3">
+                        <h5 className="fw-bold">Account</h5>
+                        <ul className="list-unstyled">
+                            <li>My Account</li>
+                            <li>Login / Register</li>
+                            <li>Cart</li>
+                            <li>Wishlist</li>
+                            <li>Shop</li>
+                        </ul>
                     </div>
 
-                    {/* Email Section */}
-                    <div className="col-md-3 mb-4">
-                        <h6 className="fw-normal pb-3 mb-0">Email</h6>
-                        <div className="textwidget">
-                            <ul className="conk d-flex flex-column gap-2">
-                                <li className="d-flex gap-2">
-                                    <i className="fa fa-envelope"></i>{" "}
-                                    <span style={{ fontSize: "14px" }}>
-                                        General - info@vigourgroup.com
-                                    </span>
-                                </li>
-                                <li className="d-flex gap-2">
-                                    <i className="fa fa-envelope"></i>{" "}
-                                    <span style={{ fontSize: "14px" }}>
-                                        Export - export@vigourgroup.com
-                                    </span>
-                                </li>
-                            </ul>
-                        </div>
+                    {/* Quick Links Section */}
+                    <div className="col-md-3">
+                        <h5 className="fw-bold">Quick Link</h5>
+                        <ul className="list-unstyled">
+                            <li>Privacy Policy</li>
+                            <li>Terms Of Use</li>
+                            <li>FAQ</li>
+                            <li>Contact</li>
+                        </ul>
                     </div>
                 </div>
 
-                <hr className="border-secondary" />
-
-                {/* Footer Bottom Links */}
-                <div className="text-center d-flex mt-3 justify-content-between">
-                    <span className="mb-1">
-                        <ul
-                            className="d-flex footlistk"
-                            style={{ fontSize: "12px", color: "GrayText" }}
-                        >
-                            <li style={{ paddingLeft: "0" }}>
-                                <a href="https://www.vigourgroup.com/about-us/">ABOUT US</a>
-                            </li>
-                            <li>
-                                <a href="https://www.vigourgroup.com/industry/">INDUSTRY</a>
-                            </li>
-                            <li>
-                                <a href="https://www.vigourgroup.com/products/">PRODUCTS</a>
-                            </li>
-                            <li>
-                                <a href="https://www.vigourgroup.com/infrastructure/">
-                                    INFRASTRUCTURE
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.vigourgroup.com/global-development/">
-                                    GLOBAL DEVELOPMENT
-                                </a>
-                            </li>
-                            <li style={{ border: "0" }}>
-                                <a href="https://www.vigourgroup.com/contact-us/">CONTACT US</a>
-                            </li>
-                        </ul>{" "}
-                    </span>
-                    <span className="text-white small" style={{ fontSize: "12px" }}>
-                        © 2021 All rights reserved. Design & Developed By Bedigitalimpact
-                    </span>
+                {/* Copyright Section */}
+                <div className="text-center mt-4 border-top pt-3">
+                    <p className="mb-0">© Copyright Harmoni 2025. All rights reserved</p>
                 </div>
             </div>
         </footer>
-    )
-}
+    );
+};
 
-export default Footer
+export default Footer;

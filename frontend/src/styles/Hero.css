@@ -1,5 +1,5 @@
 .hero {
-  height: 100vh;
+  height: 90vh;
   display: flex;
   /* background: linear-gradient(180deg, #fde1ff, #e1ffea22 60%); */
   background: linear-gradient(266deg, #f0d52a, #ffffff22 70%);
@@ -30,12 +30,6 @@
 .hero-right img {
     width: 75%;
 } */
-
-@media (max-width: 1280px) {
-}
-
-@media (max-width: 1024px) {
-}
 
 @media (max-width: 800px) {
   .main-heading {

@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 import Home from "./Pages/Home/Home";
 import "./App.css";
 
@@ -15,7 +16,7 @@ const App = () => {
           {/* <Route path="/checkout" element={<Checkout />} /> */}
         </Routes>
       </Router>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };

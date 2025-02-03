@@ -1,0 +1,12 @@
+.discover-section {
+  height: 30vh;
+  background-color: #171717;
+}
+
+.discover-buttons button {
+  outline: none;
+  border: 0.1px solid #fff;
+  border-radius: 8px;
+  padding: 4px 20px;
+  cursor: pointer;
+}
