@@ -3,8 +3,10 @@
 }
 
 .navbar-section {
-  background-color: rgb(236, 164, 49);
+  background-color: rgba(241, 186, 35, 0.799);
   display: flex;
+  position: sticky;
+  top: 0;
   justify-content: space-between;
   padding: 20px 50px;
   box-shadow: 0 1px 3px -2px black;
