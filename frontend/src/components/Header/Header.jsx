@@ -8,6 +8,7 @@ const Header = ({ setProducts, scrollToProducts, cartCount }) => {
     const [searchQuery, setSearchQuery] = useState("");
     const [filteredCategories, setFilteredCategories] = useState([]);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -46,8 +47,21 @@ const Header = ({ setProducts, scrollToProducts, cartCount }) => {
         scrollToProducts(); // Scroll to Products section
     };
 
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     return (
-        <div className="navbar-section">
+        <div className={`navbar-section ${isScrolled ? "scrolled" : ""}`}>
             <div className="nav-logo">
                 <div className="menu-icon" onClick={handleClick}>
                     <i className={clicked ? "fas fa-times" : "fas fa-bars"}></i>

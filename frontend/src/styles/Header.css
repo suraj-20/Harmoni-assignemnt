@@ -1,3 +1,19 @@
+.navbar-section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 20px;
+  background: transparent;
+  transition: background 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.navbar-section.scrolled {
+  background: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 .header-section {
   height: 80px;
 }
