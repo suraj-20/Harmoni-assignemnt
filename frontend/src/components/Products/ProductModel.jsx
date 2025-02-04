@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
 const ProductModal = ({ product, isOpen, onClose, setCartCount, cartCount }) => {
     if (!product) return null;
@@ -7,18 +8,49 @@ const ProductModal = ({ product, isOpen, onClose, setCartCount, cartCount }) => 
         setCartCount(prevCount => prevCount + 1);
     };
 
+    const renderStars = (rating) => {
+        const stars = [];
+        const fullStars = Math.floor(rating); // Full stars
+        const hasHalfStar = rating % 1 !== 0; // Check if there’s a half star
+
+        for (let i = 0; i < fullStars; i++) {
+            stars.push(<FaStar key={i} style={{ color: "rgba(241, 186, 35, 0.799)" }} />);
+        }
+
+        if (hasHalfStar) {
+            stars.push(<FaStarHalfAlt key="half" style={{ color: "rgba(241, 186, 35, 0.799)" }} />);
+        }
+
+        while (stars.length < 5) {
+            stars.push(<FaRegStar key={stars.length} style={{ color: "rgba(241, 186, 35, 0.799)" }} />);
+        }
+
+        return stars;
+    }
     return (
         <div className={`modal fade ${isOpen ? 'show' : ''}`} tabIndex="-1" role="dialog" style={{ display: isOpen ? 'block' : 'none' }}>
-            <div className="modal-dialog modal-dialog-centered" role="document">
+            {/* <div className="modal-dialog modal-dialog-centered" role="document"> */}
+            <div className='product-model' style={{
+                backgroundColor: "transparent",
+                display: "flex",
+                position: "fixed",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                background: "white",
+                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+                borderRadius: "10px"
+            }} role="document" >
                 <div className="modal-content p-4">
                     <div className="modal-body p-0">
                         <button type="button" className="close position-absolute" onClick={onClose}
-                            style={{ border: "none", background: "none", top: "-20px", left: "-10px" }}>
+                            style={{ border: "none", background: "none", top: "-14px", left: "-10px", color: "red", fontSize: "20px" }}>
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <div className="row no-gutters">
+                        <div className="row align-items-center no-gutters">
                             <div className=" col-md-6 flex justify-center items-center bg-gray-200 p-4  rounded-lg"
-                                style={{ background: "rgb(219 219 219 / 88%)", borderRadius: "5px" }}>
+                                style={{ height: "300px", borderRadius: "5px" }}
+                            >
                                 <img
                                     src={product?.image}
                                     alt={product?.title}
@@ -29,14 +61,19 @@ const ProductModal = ({ product, isOpen, onClose, setCartCount, cartCount }) => 
                                 />
                             </div>
                             <div className="col-md-6 d-flex flex-column justify-content-between">
-                                <div className="p-4">
+                                <div className="">
                                     <h5 className="modal-title">{product?.title.split(" ").slice(0, 2).join(" ").substring(0, 20)}
                                         {product?.title.length > 20 ? "..." : ""}</h5>
-                                    <p className="text-muted" style={{ fontSize: "12px" }}>{product?.description.split(" ").slice(0, 40).join(" ").substring(0, 40)}
-                                        {product?.description.length > 40 ? "..." : ""}</p>
-                                </div>
-                                <div className="bg-light p-4 rounded-bottom">
+                                    <div className="align-items-center gap-2 mt-1 d-flex" style={{ fontSize: "15px", color: "rgba(241, 186, 35, 0.799)" }}>
+                                        <div className="flex">{renderStars(product.rating.rate)}</div>
+                                        <span className="text-gray-500 text-sm ml-1">({product.rating.count} Reviews)</span>
+                                    </div>
                                     <p className="h4 font-weight-bold mb-3" >${product?.price}</p>
+                                    <p style={{ fontSize: "12px" }}>{product?.description}</p>
+                                    {/* <p className="text-muted" style={{ fontSize: "12px" }}>{product?.description.split(" ").slice(0, 100).join(" ").substring(0, 40)}
+                                        {product?.description.length > 60 ? "..." : ""}</p> */}
+                                </div>
+                                <div className=" rounded-bottom" >
                                     <div className="input-group">
                                         <div className="input-group-prepend">
                                             <button className="btn btn-outline-secondary" type="button">-</button>
@@ -55,7 +92,7 @@ const ProductModal = ({ product, isOpen, onClose, setCartCount, cartCount }) => 
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
