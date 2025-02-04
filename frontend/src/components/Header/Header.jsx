@@ -45,12 +45,12 @@ const Header = () => {
                             </button>
                         ) : (
                             <div >
-                                <i class="fa-solid fa-user"></i>
+                                <i className="fa-solid fa-user"></i>
                             </div>
                         )}
 
                         <div >
-                            <i class="fa-solid fa-cart-shopping"></i>
+                            <i className="fa-solid fa-cart-shopping"></i>
                         </div >
                         {/* <div className="nav-cart-count">{getTotalCartItems()}</div> */}
                     </div >
