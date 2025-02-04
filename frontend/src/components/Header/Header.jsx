@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "../../styles/Header.css";
 
-const Header = ({ setProducts }) => {
+const Header = ({ setProducts, scrollToProducts }) => {
     const [clicked, setClicked] = useState(false);
     const [categories, setCategories] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
@@ -43,6 +43,7 @@ const Header = ({ setProducts }) => {
         } catch (error) {
             console.error("Error fetching products:", error);
         }
+        scrollToProducts(); // Scroll to Products section
     };
 
     return (
@@ -64,8 +65,34 @@ const Header = ({ setProducts }) => {
                     <li><a href='/'>More</a></li>
                 </ul>
 
-                <div className="searchbox relative">
-                    <input
+                <div className="searchbox">
+                    <div className="relative w-64">
+                        <input
+                            type="text"
+                            value={searchQuery}
+                            onChange={handleSearchChange}
+                            placeholder="Search categories..."
+                            className="w-full px-4 py-2 border rounded-md"
+                        />
+                        {isDropdownOpen && (
+                            <ul style={{ position: "absolute" }} className="absolute w-full bg-white border mt-1 shadow-lg rounded-md z-50">
+                                {filteredCategories.length > 0 ? (
+                                    filteredCategories.map((category, index) => (
+                                        <li
+                                            key={index}
+                                            className="px-4 py-2 cursor-pointer hover:bg-gray-100"
+                                            onClick={() => handleCategorySelect(category)}
+                                        >
+                                            {category}
+                                        </li>
+                                    ))
+                                ) : (
+                                    <li className="px-4 py-2 text-gray-500">No results found</li>
+                                )}
+                            </ul>
+                        )}
+                    </div>
+                    {/* <input
                         type="text"
                         placeholder="Search for products..."
                         value={searchQuery}
@@ -89,7 +116,7 @@ const Header = ({ setProducts }) => {
                                 <li className="px-4 py-2 text-gray-500">No results found</li>
                             )}
                         </ul>
-                    )}
+                    )} */}
                 </div>
 
                 <div className="nav-login-cart">

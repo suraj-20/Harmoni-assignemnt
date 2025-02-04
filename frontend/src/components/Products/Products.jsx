@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { forwardRef, useState } from "react";
 import "../../styles/Product.css";
 import ProductCard from "./ProductCard";
 import ProductModal from "./ProductModel";
 
-const Products = ({ products, loading }) => {
+const Products = forwardRef(({ products, loading }, ref) => {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
 
@@ -17,7 +17,7 @@ const Products = ({ products, loading }) => {
     };
 
     return (
-        <div className="products-section py-8">
+        <div className="products-section py-8" ref={ref}>
             <div className="container mx-auto">
                 <h5 className="text-red-500 text-lg text-center">Our Products</h5>
                 <h2 className="text-2xl font-bold text-center mb-4">Explore our products</h2>
@@ -40,6 +40,6 @@ const Products = ({ products, loading }) => {
             </div>
         </div>
     );
-};
+});
 
 export default Products;
