@@ -36,7 +36,7 @@ const ProductModal = ({ product, isOpen, onClose, setCartCount, cartCount }) => 
                                         {product?.description.length > 40 ? "..." : ""}</p>
                                 </div>
                                 <div className="bg-light p-4 rounded-bottom">
-                                    <p className="h4 font-weight-bold mb-3">${product?.price}</p>
+                                    <p className="h4 font-weight-bold mb-3" >${product?.price}</p>
                                     <div className="input-group">
                                         <div className="input-group-prepend">
                                             <button className="btn btn-outline-secondary" type="button">-</button>

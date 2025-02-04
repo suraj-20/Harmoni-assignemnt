@@ -18,7 +18,7 @@ const Products = forwardRef(({ products, loading, setCartCount, cartCount }, ref
 
     return (
         <div className="products-section py-8" ref={ref}>
-            <div className="container mx-auto">
+            <div className=" mx-auto">
                 <h5 className="text-red-500 text-lg text-center" style={{ color: "red" }}>Our Products</h5>
                 <h2 className="text-2xl font-bold text-center mb-4">Explore our products</h2>
 
