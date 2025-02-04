@@ -8,7 +8,8 @@ import "./App.css";
 const App = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const productsRef = useRef(null); // Reference to Products section
+  const productsRef = useRef(null);
+  const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -31,7 +32,11 @@ const App = () => {
 
   return (
     <Router>
-      <Header setProducts={setProducts} scrollToProducts={scrollToProducts} />
+      <Header
+        setProducts={setProducts}
+        scrollToProducts={scrollToProducts}
+        cartCount={cartCount}
+      />
       <Routes>
         <Route
           path="/"
@@ -40,6 +45,8 @@ const App = () => {
               products={products}
               loading={loading}
               productsRef={productsRef}
+              setCartCount={setCartCount}
+              cartCount={cartCount}
             />
           }
         />

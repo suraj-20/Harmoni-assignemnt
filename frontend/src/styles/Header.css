@@ -95,8 +95,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -35px;
-  margin-left: -55px;
+  position: absolute;
+  top: 5px;
+  right: 30px;
   border-radius: 11px;
   font-size: 14px;
   background: red;
@@ -141,7 +142,7 @@
     font-size: 16px;
   }
   .nav-cart-count {
-    margin-left: -40px;
+    /* margin-left: -40px; */
     font-size: 12px;
   }
 }
@@ -165,7 +166,7 @@
   .nav-cart-count {
     width: 18px;
     height: 18px;
-    margin-top: -25px;
+    right: 10px;
   }
 }
 
@@ -217,5 +218,11 @@
   }
   .nav-login-cart {
     transform: scale(0.8);
+  }
+  .nav-cart-count {
+    width: 18px;
+    height: 18px;
+    top: -6px;
+    right: -10%;
   }
 }

@@ -1,6 +1,12 @@
 import React from 'react';
 
-const ProductModal = ({ product, isOpen, onClose }) => {
+const ProductModal = ({ product, isOpen, onClose, setCartCount, cartCount }) => {
+    if (!product) return null;
+
+    const handleAddToCart = () => {
+        setCartCount(prevCount => prevCount + 1);
+    };
+
     return (
         <div className={`modal fade ${isOpen ? 'show' : ''}`} tabIndex="-1" role="dialog" style={{ display: isOpen ? 'block' : 'none' }}>
             <div className="modal-dialog modal-dialog-centered" role="document">
@@ -35,12 +41,12 @@ const ProductModal = ({ product, isOpen, onClose }) => {
                                         <div className="input-group-prepend">
                                             <button className="btn btn-outline-secondary" type="button">-</button>
                                         </div>
-                                        <input type="text" className="form-control" placeholder="Quantity" value="2" />
+                                        <input type="text" className="form-control" placeholder="Quantity" value={cartCount} />
                                         <div className="input-group-append">
-                                            <button className="btn btn-outline-secondary" type="button">+</button>
+                                            <button onClick={handleAddToCart} className="btn btn-outline-secondary" type="button">+</button>
                                         </div>
                                     </div>
-                                    <button className="bg-black text-white w-100 py-2 mt-3 rounded-md font-medium transition-transform duration-200 hover:scale-95">
+                                    <button onClick={handleAddToCart} className="bg-black text-white w-100 py-2 mt-3 rounded-md font-medium transition-transform duration-200 hover:scale-95">
                                         Add To Cart
                                     </button>
                                 </div>

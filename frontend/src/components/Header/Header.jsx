@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "../../styles/Header.css";
 
-const Header = ({ setProducts, scrollToProducts }) => {
+const Header = ({ setProducts, scrollToProducts, cartCount }) => {
     const [clicked, setClicked] = useState(false);
     const [categories, setCategories] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
@@ -92,51 +92,16 @@ const Header = ({ setProducts, scrollToProducts }) => {
                             </ul>
                         )}
                     </div>
-                    {/* <input
-                        type="text"
-                        placeholder="Search for products..."
-                        value={searchQuery}
-                        onChange={handleSearchChange}
-                        className="w-full px-4 py-2 border rounded-md"
-                    />
-
-                    {isDropdownOpen && (
-                        <ul className="absolute left-0 right-0 bg-white border mt-1 shadow-lg rounded-md">
-                            {filteredCategories.length > 0 ? (
-                                filteredCategories.map((category, index) => (
-                                    <li
-                                        key={index}
-                                        className="px-4 py-2 cursor-pointer hover:bg-gray-100"
-                                        onClick={() => handleCategorySelect(category)}
-                                    >
-                                        {category}
-                                    </li>
-                                ))
-                            ) : (
-                                <li className="px-4 py-2 text-gray-500">No results found</li>
-                            )}
-                        </ul>
-                    )} */}
                 </div>
 
                 <div className="nav-login-cart">
-                    {localStorage.getItem("Auth-token") ? (
-                        <button
-                            onClick={() => {
-                                localStorage.removeItem("Auth-token");
-                                window.location.replace("/");
-                            }}
-                        >
-                            Logout
-                        </button>
-                    ) : (
-                        <div>
-                            <i className="fa-solid fa-user"></i>
-                        </div>
-                    )}
+                    <div>
+                        <i className="fa-solid fa-user"></i>
+                    </div>
 
                     <div>
                         <i className="fa-solid fa-cart-shopping"></i>
+                        <div className="nav-cart-count">{cartCount}</div>
                     </div>
                 </div>
             </div>

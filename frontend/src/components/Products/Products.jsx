@@ -3,7 +3,7 @@ import "../../styles/Product.css";
 import ProductCard from "./ProductCard";
 import ProductModal from "./ProductModel";
 
-const Products = forwardRef(({ products, loading }, ref) => {
+const Products = forwardRef(({ products, loading, setCartCount, cartCount }, ref) => {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
 
@@ -36,7 +36,7 @@ const Products = forwardRef(({ products, loading }, ref) => {
                     </div>
                 )}
 
-                <ProductModal product={selectedProduct} isOpen={isOpen} onClose={handleClose} />
+                <ProductModal product={selectedProduct} isOpen={isOpen} cartCount={cartCount} setCartCount={setCartCount} onClose={handleClose} />
             </div>
         </div>
     );
