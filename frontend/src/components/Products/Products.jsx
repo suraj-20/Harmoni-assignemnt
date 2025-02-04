@@ -1,26 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import "../../styles/Product.css"
-import ProductCard from './ProductCard';
-import ProductModal from './ProductModel';
+import React, { useState } from "react";
+import "../../styles/Product.css";
+import ProductCard from "./ProductCard";
+import ProductModal from "./ProductModel";
 
-const Products = () => {
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
+const Products = ({ products, loading }) => {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
-
-    useEffect(() => {
-        fetch("https://fakestoreapi.com/products")
-            .then((response) => response.json())
-            .then((data) => {
-                setProducts(data);
-                setLoading(false);
-            })
-            .catch((error) => {
-                console.error("Error fetching products:", error);
-                setLoading(false);
-            });
-    }, []);
 
     const handleOpen = (product) => {
         setSelectedProduct(product);
@@ -41,9 +26,13 @@ const Products = () => {
                     <p>Loading products...</p>
                 ) : (
                     <div className="collections">
-                        {products.map((item) => (
-                            <ProductCard key={item.id} product={item} handleOpen={handleOpen} />
-                        ))}
+                        {products.length > 0 ? (
+                            products.map((item) => (
+                                <ProductCard key={item.id} product={item} handleOpen={handleOpen} />
+                            ))
+                        ) : (
+                            <p>No products found.</p>
+                        )}
                     </div>
                 )}
 

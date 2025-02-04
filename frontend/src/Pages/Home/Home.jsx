@@ -3,14 +3,14 @@ import Hero from '../../components/Hero/Hero'
 import Favorite from '../../components/Favorite/Fovorite'
 import Products from '../../components/Products/Products'
 
-const Home = () => {
+const Home = ({ products, loading }) => {
   return (
     <div>
       <Hero />
       <Favorite />
-      <Products />
+      <Products products={products} loading={loading} />
     </div>
-  )
-}
+  );
+};
 
 export default Home
