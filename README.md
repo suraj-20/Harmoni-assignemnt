@@ -26,7 +26,7 @@ Follow the steps below to set up the project locally.
 2. **Navigate into the project directory**:
 
    ```bash
-   cd your-repository-name
+   cd frontend
    ```
 
 3. **Install dependencies: Run the following command to install the necessary dependencies:**:
