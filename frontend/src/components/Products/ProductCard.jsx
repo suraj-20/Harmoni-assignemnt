@@ -1,39 +1,43 @@
-import React from 'react'
+import React from "react";
 
-const ProductCard = (props) => {
+const ProductCard = ({ product, handleOpen }) => {
     return (
-        <div className="shadow-md rounded-lg p-4 w-64" >
+        <div
+            className="shadow-md rounded-lg p-4 w-full sm:w-72 md:w-60 lg:w-64 xl:w-72 cursor-pointer transition-transform duration-300 hover:scale-105"
+            onClick={() => handleOpen(product)}
+        >
             {/* Product Image */}
-            <div className="d-flex justify-content-center align-items-center"
-                style={{ padding: "40px", background: "rgb(219 219 219 / 88%)", height: "200px", borderRadius: "5px" }}>
-                <img style={{ mixBlendMode: "multiply" }} src={props.image} alt={props.title} width="100px" height="100%" className="h-40 object-cover" />
+            <div className="flex justify-center items-center bg-gray-200 p-4  rounded-lg"
+                style={{ background: "rgb(219 219 219 / 88%)", height: "200px", borderRadius: "5px" }}>
+                <img
+                    src={product.image}
+                    alt={product.title}
+                    width="100%"
+                    height="100%"
+                    className="max-w-full object-contain "
+                    style={{ mixBlendMode: "multiply" }}
+                />
             </div>
 
             {/* Product Title */}
-            <h6 className=" mt-2">
-                {props.name.split(" ").slice(0, 2).join(" ").substring(0, 20)}
-                {props.name.length > 20 ? "..." : ""}
+            <h6 className="mt-2 font-semibold text-lg md:text-base truncate">
+                {product.title.split(" ").slice(0, 2).join(" ").substring(0, 20)}
+                {product.title.length > 20 ? "..." : ""}
             </h6>
 
             {/* Price & Rating */}
             <div className="flex items-center justify-center mt-1">
-                <span className="text-orange-500 font-bold text-lg">${props.price}</span>
-                {/* <div className="flex ml-2">
-                    {[...Array(5)].map((_, i) => (
-                        <span key={i} className={i < rating ? "text-yellow-500" : "text-gray-400"}>
-                            ★
-                        </span>
-                    ))}
-                </div> */}
-                <span className="text-gray-500 text-sm ml-1">({props.rating.count})</span>
+                <span className="text-orange-500 font-bold text-lg">${product.price}</span>
+                <span className="text-gray-500 text-sm ml-1">({product.rating.count})</span>
             </div>
 
             {/* Add to Cart Button */}
-            <button className="bg-black text-white w-100 py-1 mt-3 rounded-md font-medium">
+            <button className="bg-black text-white w-100 py-2 mt-3 rounded-md font-medium transition-transform duration-200 hover:scale-95">
                 Add To Cart
             </button>
         </div>
-    )
-}
+    );
+};
 
-export default ProductCard
+export default ProductCard;
+

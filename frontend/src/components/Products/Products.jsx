@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import "../../styles/Product.css"
 import ProductCard from './ProductCard';
-import "../../styles/Product.css";
+import ProductModal from './ProductModel';
 
 const Products = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
         fetch("https://fakestoreapi.com/products")
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
-
                 setProducts(data);
                 setLoading(false);
             })
@@ -19,30 +20,37 @@ const Products = () => {
                 console.error("Error fetching products:", error);
                 setLoading(false);
             });
-    }, [loading]);
+    }, []);
+
+    const handleOpen = (product) => {
+        setSelectedProduct(product);
+        setIsOpen(true);
+    };
+
+    const handleClose = () => {
+        setIsOpen(false);
+    };
 
     return (
-        <div className="products-section">
-            <div className="container">
-                <h5 style={{ color: "red" }}>Our Products</h5>
-                <h2>Explore our products</h2>
-                <div className="collections">
-                    {products.map((item, i) => {
-                        return (
-                            <ProductCard
-                                key={i}
-                                id={item.id}
-                                name={item.title}
-                                image={item.image}
-                                price={item.price}
-                                rating={item.rating}
-                            />
-                        );
-                    })}
-                </div>
+        <div className="products-section py-8">
+            <div className="container mx-auto">
+                <h5 className="text-red-500 text-lg text-center">Our Products</h5>
+                <h2 className="text-2xl font-bold text-center mb-4">Explore our products</h2>
+
+                {loading ? (
+                    <p>Loading products...</p>
+                ) : (
+                    <div className="collections">
+                        {products.map((item) => (
+                            <ProductCard key={item.id} product={item} handleOpen={handleOpen} />
+                        ))}
+                    </div>
+                )}
+
+                <ProductModal product={selectedProduct} isOpen={isOpen} onClose={handleClose} />
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Products
+export default Products;
