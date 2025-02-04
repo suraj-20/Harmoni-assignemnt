@@ -1,32 +1,12 @@
 import React from 'react';
-import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
-const ProductModal = ({ product, isOpen, onClose, setCartCount, cartCount }) => {
+const ProductModal = ({ product, isOpen, onClose, setCartCount, cartCount, renderStars }) => {
     if (!product) return null;
 
     const handleAddToCart = () => {
         setCartCount(prevCount => prevCount + 1);
     };
 
-    const renderStars = (rating) => {
-        const stars = [];
-        const fullStars = Math.floor(rating); // Full stars
-        const hasHalfStar = rating % 1 !== 0; // Check if there’s a half star
-
-        for (let i = 0; i < fullStars; i++) {
-            stars.push(<FaStar key={i} style={{ color: "rgba(241, 186, 35, 0.799)" }} />);
-        }
-
-        if (hasHalfStar) {
-            stars.push(<FaStarHalfAlt key="half" style={{ color: "rgba(241, 186, 35, 0.799)" }} />);
-        }
-
-        while (stars.length < 5) {
-            stars.push(<FaRegStar key={stars.length} style={{ color: "rgba(241, 186, 35, 0.799)" }} />);
-        }
-
-        return stars;
-    }
     return (
         <div className={`modal fade ${isOpen ? 'show' : ''}`} tabIndex="-1" role="dialog" style={{ display: isOpen ? 'block' : 'none' }}>
             {/* <div className="modal-dialog modal-dialog-centered" role="document"> */}

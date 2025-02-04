@@ -2,6 +2,7 @@ import React, { forwardRef, useState } from "react";
 import "../../styles/Product.css";
 import ProductCard from "./ProductCard";
 import ProductModal from "./ProductModel";
+import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
 const Products = forwardRef(({ products, loading, setCartCount, cartCount }, ref) => {
     const [selectedProduct, setSelectedProduct] = useState(null);
@@ -16,6 +17,26 @@ const Products = forwardRef(({ products, loading, setCartCount, cartCount }, ref
         setIsOpen(false);
     };
 
+    const renderStars = (rating) => {
+        const stars = [];
+        const fullStars = Math.floor(rating); // Full stars
+        const hasHalfStar = rating % 1 !== 0; // Check if there’s a half star
+
+        for (let i = 0; i < fullStars; i++) {
+            stars.push(<FaStar key={i} style={{ color: "rgba(241, 186, 35, 0.799)" }} />);
+        }
+
+        if (hasHalfStar) {
+            stars.push(<FaStarHalfAlt key="half" style={{ color: "rgba(241, 186, 35, 0.799)" }} />);
+        }
+
+        while (stars.length < 5) {
+            stars.push(<FaRegStar key={stars.length} style={{ color: "rgba(241, 186, 35, 0.799)" }} />);
+        }
+
+        return stars;
+    }
+
     return (
         <div className="products-section py-8" ref={ref}>
             <div className=" mx-auto">
@@ -28,7 +49,7 @@ const Products = forwardRef(({ products, loading, setCartCount, cartCount }, ref
                     <div className="collections">
                         {products.length > 0 ? (
                             products.map((item) => (
-                                <ProductCard key={item.id} product={item} handleOpen={handleOpen} />
+                                <ProductCard key={item.id} product={item} handleOpen={handleOpen} renderStars={renderStars} />
                             ))
                         ) : (
                             <p>No products found.</p>
@@ -36,7 +57,13 @@ const Products = forwardRef(({ products, loading, setCartCount, cartCount }, ref
                     </div>
                 )}
 
-                <ProductModal product={selectedProduct} isOpen={isOpen} cartCount={cartCount} setCartCount={setCartCount} onClose={handleClose} />
+                <ProductModal product={selectedProduct}
+                    isOpen={isOpen}
+                    cartCount={cartCount}
+                    setCartCount={setCartCount}
+                    onClose={handleClose}
+                    renderStars={renderStars}
+                />
             </div>
         </div>
     );

@@ -1,27 +1,6 @@
 import React from "react";
-import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
-const ProductCard = ({ product, handleOpen }) => {
-    // Function to render star ratings
-    const renderStars = (rating) => {
-        const stars = [];
-        const fullStars = Math.floor(rating); // Full stars
-        const hasHalfStar = rating % 1 !== 0; // Check if there’s a half star
-
-        for (let i = 0; i < fullStars; i++) {
-            stars.push(<FaStar key={i} style={{ color: "rgba(241, 186, 35, 0.799)" }} />);
-        }
-
-        if (hasHalfStar) {
-            stars.push(<FaStarHalfAlt key="half" style={{ color: "rgba(241, 186, 35, 0.799)" }} />);
-        }
-
-        while (stars.length < 5) {
-            stars.push(<FaRegStar key={stars.length} style={{ color: "rgba(241, 186, 35, 0.799)" }} />);
-        }
-
-        return stars;
-    };
+const ProductCard = ({ product, handleOpen, renderStars }) => {
     return (
         <div
             className="shadow-md rounded-lg p-4 w-full sm:w-72 md:w-60 lg:w-64 xl:w-72 cursor-pointer transition-transform duration-300 hover:scale-105"
